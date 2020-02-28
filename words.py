@@ -18,7 +18,9 @@ import datetime
 # set paths
 dir_path = os.path.dirname(os.path.realpath(__file__))
 file_in1 = dir_path + "\\" + "words.csv"
+file_in1 = dir_path + "\\" + "ciic_inscriptions.csv"
 file_out1 = dir_path + "\\" + "out1.csv"
+file_out2 = dir_path + "\\" + "out2.csv"
 
 # read words.csv
 response = urllib2.urlopen('https://raw.githubusercontent.com/ogi-ogham/oghamextractor/master/words/words.csv')
@@ -62,7 +64,7 @@ data2 = pd.read_csv(
     file_in1, # relative python path to subdirectory
     encoding='utf-8',
     sep='\t', # deliminiter
-    quotechar="\"",  # single quote allowed as quote character
+    #quotechar="\"",  # single quote allowed as quote character
     usecols=['label_en','P1684'], # only load the  columns specified
     skiprows=0 # skip X rows of the file
 )
@@ -71,7 +73,8 @@ data2 = pd.read_csv(
 outStr2 = ""
 lines2 = []
 for index2, row2 in data2.iterrows():
-    lines2.append(str(row2['label_en']) + "," + str(row2['P1684']))
+    #print(str(row2['P1684']))
+    lines2.append(str(row2['label_en']) + "," + "")
 
 # write output file
 file2 = codecs.open(file_out2, "w", "utf-8")
